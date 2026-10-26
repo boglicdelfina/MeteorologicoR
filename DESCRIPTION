@@ -12,3 +12,15 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 URL: https://github.com/boglicdelfina/MeteorologicoR
 BugReports: https://github.com/boglicdelfina/MeteorologicoR/issues
+Imports: 
+    cli,
+    dplyr,
+    ggplot2,
+    grDevices,
+    lubridate,
+    readr,
+    stats,
+    utils
+Depends: 
+    R (>= 3.5)
+LazyData: true
