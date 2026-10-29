@@ -1,0 +1,114 @@
+---
+title: "meteorologicor"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{meteorologicor}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(MeteorologicoR)
+```
+
+MeteorologicoR reúne las funciones que desarrollamos durante los trabajos
+transversales de Programación II para trabajar con datos de estaciones
+meteorológicas del INTA. En esta viñeta mostramos cómo se usa cada una.
+
+## Los datos
+
+El paquete incluye `estaciones`, un data.frame con las mediciones diarias de
+cinco estaciones de Santa Fe entre 1961 y 2023:
+
+```{r}
+head(estaciones)
+```
+
+Son 95681 filas y siete columnas: el código de la estación, la fecha, tres
+columnas de temperatura, la precipitación y la humedad.
+
+```{r}
+unique(estaciones$id)
+```
+
+## Resumir las temperaturas
+
+`tabla_resumen_temperatura()` toma un data.frame con mediciones y devuelve el
+promedio y el desvío estándar de la temperatura de abrigo a 150 cm para cada
+estación:
+
+```{r}
+tabla_resumen_temperatura(estaciones)
+```
+
+NH0437 es la más cálida en promedio y NH0046 la más fresca. El desvío es
+parecido en todas, entre 5.8 y 6.1 °C.
+
+La función funciona igual con una sola estación:
+
+```{r}
+tabla_resumen_temperatura(subset(estaciones, id == "NH0437"))
+```
+
+## Graficar el ciclo anual
+
+`grafico_temperatura_mensual()` calcula el promedio mensual y lo grafica con
+una línea por estación:
+
+```{r, fig.width = 7, fig.height = 4}
+grafico_temperatura_mensual(
+  estaciones,
+  colores = c("darkred", "steelblue", "darkgreen", "orange", "purple"),
+  titulo = "Temperatura media mensual por estación"
+)
+```
+
+El ciclo tiene la misma forma en las cinco: máximo en enero, mínimo en julio,
+con una amplitud de unos 17 °C. Las curvas corren casi paralelas, así que las
+estaciones se diferencian por el nivel general de temperatura y no por la
+forma del ciclo.
+
+Los dos argumentos opcionales tienen valores por defecto. Si no indicamos
+colores, la función elige cinco al azar y avisa; si no indicamos título, usa
+"Temperatura":
+
+```{r, fig.width = 7, fig.height = 4}
+grafico_temperatura_mensual(estaciones)
+```
+
+## Leer los datos de otra estación
+
+Las funciones anteriores trabajan con los datos que ya vienen en el paquete,
+pero el INTA tiene muchas estaciones más. `leer_estacion()` descarga y lee
+cualquiera de ellas a partir de su código:
+
+```{r, eval = FALSE}
+otra <- leer_estacion("NH0098", "datos/NH0098.csv")
+```
+
+Si el archivo ya está en esa ruta, la función lo lee directamente en vez de
+volver a descargarlo, y avisa cuál de los dos caminos tomó.
+
+## Cuando algo sale mal
+
+Las tres funciones revisan sus argumentos antes de hacer nada y cortan con un
+mensaje claro:
+
+```{r, error = TRUE}
+tabla_resumen_temperatura("hola")
+```
+
+```{r, error = TRUE}
+tabla_resumen_temperatura(data.frame(id = "NH0437"))
+```
+
+```{r, error = TRUE}
+grafico_temperatura_mensual(estaciones, colores = c("red", "blue"))
+```
