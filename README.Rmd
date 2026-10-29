@@ -1,0 +1,66 @@
+
+MeteorologicoR reúne las funciones que desarrollamos durante los trabajos
+transversales de Programación II para trabajar con datos de estaciones
+meteorológicas del INTA. Sirve para descargar los datos de una estación,
+resumir sus temperaturas y graficar el ciclo anual sin tener que reescribir
+el mismo código cada vez.
+
+Está pensado para estudiantes y docentes que trabajen con los datos del
+Sistema de Información y Gestión Agropecuaria (SIGA).
+
+## Instalación
+
+Podés instalar la versión en desarrollo desde
+[GitHub](https://github.com/boglicdelfina/MeteorologicoR) con:
+
+``` r
+# install.packages("pak")
+pak::pak("boglicdelfina/MeteorologicoR")
+```
+
+## Cómo empezar
+
+El paquete incluye `estaciones`, con las mediciones diarias de cinco
+estaciones de Santa Fe:
+
+```{r ejemplo-datos}
+library(MeteorologicoR)
+
+head(estaciones)
+```
+
+`tabla_resumen_temperatura()` devuelve el promedio y el desvío estándar de
+la temperatura de abrigo para cada estación:
+
+```{r ejemplo-tabla}
+tabla_resumen_temperatura(estaciones)
+```
+
+`grafico_temperatura_mensual()` muestra el ciclo anual, con una línea por
+estación:
+
+```{r ejemplo-grafico, fig.width = 7, fig.height = 4}
+grafico_temperatura_mensual(
+  estaciones,
+  colores = c("darkred", "steelblue", "darkgreen", "orange", "purple"),
+  titulo = "Temperatura media mensual por estación"
+)
+```
+
+Si no le pasás colores los elige al azar, y el título por defecto es
+"Temperatura".
+
+Y `leer_estacion()` descarga y lee los datos de cualquier estación del INTA
+a partir de su código.
+
+## Autores
+
+- Delfina Boglic
+- Kevin Milberg
+
+## Contribuir
+
+Nos interesan sobre todo los reportes de errores y las sugerencias de
+funciones nuevas para analizar otras variables del dataset, como la
+precipitación o la humedad. Si querés contribuir, abrí un
+[issue](https://github.com/boglicdelfina/MeteorologicoR/issues).
