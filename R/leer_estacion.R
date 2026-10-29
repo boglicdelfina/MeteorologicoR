@@ -21,7 +21,7 @@ leer_estacion <- function(id, ruta) {
 
   if (!is.character(id)) {
     cli::cli_abort(c(
-      "El id debe ser un texto con el c\U00F3digo de la estaci\U00F3n.",
+      "El id debe ser un texto con el c\u00F3digo de la estaci\u00F3n.",
       "i" = "La variable ingresada es un {class(id)[1]}."
     ))
   }
@@ -32,9 +32,9 @@ leer_estacion <- function(id, ruta) {
       id, ".csv"
     )
     utils::download.file(url, ruta)
-    cli::cli_inform("Se descarg\U00F3 el archivo de la estaci\U00F3n {id} en {ruta}.")
+    cli::cli_inform("Se descarg\u00F3 el archivo de la estaci\u00F3n {id} en {ruta}.")
   } else {
-    cli::cli_inform("El archivo {ruta} ya exist\U00EDa, se lee directamente.")
+    cli::cli_inform("El archivo {ruta} ya exist\u00EDa, se lee directamente.")
   }
 
   readr::read_csv(ruta, show_col_types = FALSE)
