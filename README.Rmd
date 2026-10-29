@@ -1,3 +1,25 @@
+---
+output: github_document
+---
+
+<!-- README.md se genera desde README.Rmd. Por favor editá ese archivo -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# MeteorologicoR
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/boglicdelfina/MeteorologicoR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/boglicdelfina/MeteorologicoR/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/boglicdelfina/MeteorologicoR/graph/badge.svg)](https://app.codecov.io/gh/boglicdelfina/MeteorologicoR)
+<!-- badges: end -->
 
 MeteorologicoR reúne las funciones que desarrollamos durante los trabajos
 transversales de Programación II para trabajar con datos de estaciones
