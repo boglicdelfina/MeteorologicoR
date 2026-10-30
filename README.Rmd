@@ -85,4 +85,9 @@ a partir de su código.
 Nos interesan sobre todo los reportes de errores y las sugerencias de
 funciones nuevas para analizar otras variables del dataset, como la
 precipitación o la humedad. Si querés contribuir, abrí un
-[issue](https://github.com/boglicdelfina/MeteorologicoR/issues).
+[issue](https://github.com/boglicdelfina/MeteorologicoR/issues) y, leé antes la
+[guía de contribución](.github/CONTRIBUTING.md).
+
+Por favor tené en cuenta que MeteorologicoR se publica con un
+[código de conducta](CODE_OF_CONDUCT.md). Al contribuir a este proyecto,
+aceptás respetar sus términos.
