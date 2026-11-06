@@ -1,5 +1,7 @@
+
 # 1- Devuelve una fila por estacion y por mes, con las columnas esperadas --> expect_equal()
 # 2- NAs: Un mes sin ningun dato da NA y no cero --> expect_true()
+# 3- Falla si el argumento no es valido: no es data.frame, faltan columnas o la fecha no es Date --> expect_error()
 
 
 test_that("devuelve una fila por estacion y por mes", {
@@ -28,5 +30,24 @@ test_that("un mes sin datos da NA y los dias faltantes se ignoran", {
 
   expect_equal(resultado$precipitacion_acumulada[1], 10)
   expect_true(is.na(resultado$precipitacion_acumulada[2]))
+
+})
+
+test_that("no acepta argumentos invalidos", {
+
+  expect_error(precipitacion_mensual("hola"), "data.frame")
+
+  expect_error(
+    precipitacion_mensual(data.frame(id = "A")),
+    "no tiene todas las columnas"
+  )
+
+  datos <- data.frame(
+    id = "A",
+    fecha = "2020-01-05",
+    precipitacion_pluviometrica = 10
+  )
+
+  expect_error(precipitacion_mensual(datos), "Date o POSIXct")
 
 })
