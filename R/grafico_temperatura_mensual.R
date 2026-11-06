@@ -28,6 +28,16 @@ grafico_temperatura_mensual <- function(datos, colores = NULL, titulo = "Tempera
     ))
   }
 
+  columnas <- c("id", "fecha", "temperatura_abrigo_150cm")
+  faltantes <- setdiff(columnas, names(datos))
+
+  if (length(faltantes) > 0) {
+    cli::cli_abort(c(
+      "La tabla no tiene todas las columnas necesarias.",
+      "i" = "Faltan: {faltantes}."
+    ))
+  }
+
   cantidad_estaciones <- length(unique(datos$id))
 
   if (is.null(colores)) {

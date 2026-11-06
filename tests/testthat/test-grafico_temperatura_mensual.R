@@ -54,5 +54,9 @@ test_that("no grafica si faltan colores o el argumento es invalido", {
     "Faltan colores"
   )
   expect_error(grafico_temperatura_mensual("hola"), "data.frame")
+  expect_error(
+    grafico_temperatura_mensual(data.frame(a = 1)),
+    "no tiene todas las columnas"
+  )
 
 })
