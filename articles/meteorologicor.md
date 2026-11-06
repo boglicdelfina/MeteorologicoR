@@ -175,7 +175,8 @@ tabla_resumen_temperatura("hola")
 
 tabla_resumen_temperatura(data.frame(id = "NH0437"))
 #> Error in `tabla_resumen_temperatura()`:
-#> ! La tabla no tiene la columna temperatura_abrigo_150cm.
+#> ! La tabla no tiene todas las columnas necesarias.
+#> ℹ Faltan: temperatura_abrigo_150cm.
 ```
 
 ``` r
