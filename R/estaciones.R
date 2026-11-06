@@ -18,4 +18,7 @@
 #'
 #' @source Instituto Nacional de Tecnologia Agropecuaria (INTA), SIGA.
 #'   <https://github.com/rse-r/intro-programacion/tree/main/datos>
+#'
+#' @examples
+#' head(estaciones)
 "estaciones"
