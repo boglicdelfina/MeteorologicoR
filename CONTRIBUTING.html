@@ -37,23 +37,30 @@
 
 <div id="contribuir-a-meteorologicor" class="section level1">
 
-<p>Este documento explica cómo proponer un cambio en MeteorologicoR. Para una discucion detallada sobre contribucion y cosas sobre el paquete de tidyverse, por favor revisar <a href="https://rstd.io/tidy-contrib" class="external-link">guia de contribucion de development</a> y nuestro <a href="https://code-review.tidyverse.org/" class="external-link">principios de revision de codigo</a>. ## Corregir errores de tipeo</p>
-<p>Podés corregir errores de tipeo, de ortografía o de gramática en la documentación directamente desde la interfaz web de GitHub, siempre que el cambio se haga en el archivo <em>fuente</em>. Esto generalmente significa que tenés que editar los comentarios de <a href="https://roxygen2.r-lib.org/articles/roxygen2.html" class="external-link">roxygen2 comments</a> en un archivo <code>.R</code>, no en un archivo <code>.Rd</code>. Podés encontrar el <code>.R</code> que genera el <code>.Rd</code> leyendo el comentario de la primera línea. ## Cambios más grandes</p>
-<p>Si querés hacer un cambio más grande, conviene que primero abras un <a href="https://github.com/boglicdelfina/MeteorologicoR/issues" class="external-link">issue</a> y te asegures de que alguien del equipo esté de acuerdo en que hace falta. Si encontraste un error, abrí un issue que lo muestre con un ejemplo mínimo reproducible (esto también te va a ayudar a escribir un test, si hace falta). Mira la guia en <a href="https://code-review.tidyverse.org/issues/" class="external-link">como crear un buen issue</a> para mas consejos.</p>
+<p>Este documento explica cómo proponer un cambio en MeteorologicoR.</p>
+<div class="section level2">
+<h2 id="corregir-errores-de-tipeo">Corregir errores de tipeo<a class="anchor" aria-label="anchor" href="#corregir-errores-de-tipeo"></a></h2>
+<p>Podés corregir errores de tipeo, de ortografía o de gramática en la documentación directamente desde la interfaz web de GitHub, siempre que el cambio se haga en el archivo <em>fuente</em>.</p>
+<p>Esto generalmente significa que tenés que editar los comentarios de <a href="https://roxygen2.r-lib.org/articles/roxygen2.html" class="external-link">roxygen2</a> en un archivo <code>.R</code>, no en un archivo <code>.Rd</code>. Podés encontrar el <code>.R</code> que genera el <code>.Rd</code> leyendo el comentario de la primera línea.</p>
+</div>
+<div class="section level2">
+<h2 id="cambios-más-grandes">Cambios más grandes<a class="anchor" aria-label="anchor" href="#cambios-m%C3%A1s-grandes"></a></h2>
+<p>Si querés hacer un cambio más grande, conviene que primero abras un <a href="https://github.com/boglicdelfina/MeteorologicoR/issues" class="external-link">issue</a> y te asegures de que alguien del equipo esté de acuerdo en que hace falta.</p>
+<p>Si encontraste un error, abrí un issue que lo muestre con un ejemplo mínimo reproducible: eso también te va a ayudar a escribir un test, si hace falta. Podés mirar la guía sobre <a href="https://code-review.tidyverse.org/issues/" class="external-link">cómo crear un buen issue</a> para más consejos.</p>
 <div class="section level3">
 <h3 id="proceso-para-los-pull-requests">Proceso para los pull requests<a class="anchor" aria-label="anchor" href="#proceso-para-los-pull-requests"></a></h3>
 <ul><li><p>Hacé un fork del paquete y clonalo en tu computadora. Si nunca lo hiciste, te recomendamos usar <code>usethis::create_from_github("boglicdelfina/MeteorologicoR", fork = TRUE)</code>.</p></li>
-<li><p>Instalá todas las dependencias de desarrollo con <code>devtools::install_dev_deps()</code> y verificá que el paquete pase correctamente R CMD check usando <code>devtools::check()</code> sin problemas. Si <code>devtools::check()</code> no pasa limpio, conviene pedir ayuda antes de seguir.</p></li>
-<li><p>Creá una rama de Git para tu pull request (PR). Te recomendamos usar <code>usethis::pr_init("descripcion-breve-del-cambio")</code>.</p></li>
-<li><p>Hacé tus cambios, commiteá, y creá el PR con <code>usethis::pr_push()</code> siguiendo las instrucciones en el navegador. El título del PR tiene que describir brevemente el cambio. El cuerpo del PR tiene que incluir <code>Fixes #numero-de-issue</code>.</p></li>
-<li><p>Para los cambios que afectan directamente a los usuarios, agregá un punto al principio de NEWS.md (justo debajo del primer encabezado). Seguí el estilo descripto en <a href="https://style.tidyverse.org/news.html" class="external-link uri">https://style.tidyverse.org/news.html</a>.</p></li>
+<li><p>Instalá todas las dependencias de desarrollo con <code>devtools::install_dev_deps()</code> y verificá que el paquete pase <code>devtools::check()</code> sin errores, warnings ni notas. Si no pasa limpio, conviene pedir ayuda antes de seguir.</p></li>
+<li><p>Creá una rama de Git para tu pull request. Te recomendamos usar <code>usethis::pr_init("descripcion-breve-del-cambio")</code>.</p></li>
+<li><p>Hacé tus cambios, commiteá, y creá el pull request con <code>usethis::pr_push()</code> siguiendo las instrucciones en el navegador. El título tiene que describir brevemente el cambio, y el cuerpo incluir <code>Fixes #numero-de-issue</code>.</p></li>
 </ul></div>
 <div class="section level3">
 <h3 id="estilo-del-código">Estilo del código<a class="anchor" aria-label="anchor" href="#estilo-del-c%C3%B3digo"></a></h3>
-<ul><li><p>El código nuevo debe seguir la guía de estilo de tidyverse <a href="https://style.tidyverse.org" class="external-link">guia de estilo</a> Podés usar <a href="https://posit-dev.github.io/air/" class="external-link">Air</a> para aplicar este estilo, pero no reformatees código que no esté relacionado con tu PR.</p></li>
-<li><p>Usamos <a href="https://cran.r-project.org/package=roxygen2" class="external-link">roxygen2</a>, con <a href="https://cran.r-project.org/web/packages/roxygen2/vignettes/rd-formatting.html" class="external-link">Markdown syntax</a>, para documentacion.</p></li>
-<li><p>Usamos <a href="https://cran.r-project.org/package=testthat" class="external-link">testthat</a> para tests unitarios. las contribuciones con casos de test incluidas son mas faciles de aceptar</p></li>
+<ul><li><p>El código nuevo sigue la <a href="https://style.tidyverse.org" class="external-link">guía de estilo de tidyverse</a>. Podés usar <a href="https://posit-dev.github.io/air/" class="external-link">Air</a> para aplicarla, pero no reformatees código que no tenga que ver con tu pull request.</p></li>
+<li><p>Usamos <a href="https://cran.r-project.org/package=roxygen2" class="external-link">roxygen2</a> con <a href="https://roxygen2.r-lib.org/articles/rd-formatting.html" class="external-link">sintaxis Markdown</a> para la documentación.</p></li>
+<li><p>Usamos <a href="https://cran.r-project.org/package=testthat" class="external-link">testthat</a> para los tests. Las contribuciones que vienen con sus propios tests son más fáciles de aceptar.</p></li>
 </ul></div>
+</div>
 <div class="section level2">
 <h2 id="código-de-conducta">Código de Conducta<a class="anchor" aria-label="anchor" href="#c%C3%B3digo-de-conducta"></a></h2>
 <p>Tené en cuenta que el proyecto MeteorologicoR se publica con un <a href="../CODE_OF_CONDUCT.html">Código de Conducta del Pacto del Contribuyente</a>. Al contribuir a este proyecto, aceptás respetar sus términos.</p>
