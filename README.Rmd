@@ -24,8 +24,8 @@ knitr::opts_chunk$set(
 MeteorologicoR reúne las funciones que desarrollamos durante los trabajos
 transversales de Programación II para trabajar con datos de estaciones
 meteorológicas del INTA. Sirve para descargar los datos de una estación,
-resumir sus temperaturas y graficar el ciclo anual sin tener que reescribir
-el mismo código cada vez.
+resumir sus temperaturas, acumular la precipitación por mes y graficar el
+ciclo anual sin tener que reescribir el mismo código cada vez.
 
 Está pensado para estudiantes y docentes que trabajen con los datos del
 Sistema de Información y Gestión Agropecuaria (SIGA).
@@ -72,6 +72,16 @@ grafico_temperatura_mensual(
 Si no le pasás colores los elige al azar, y el título por defecto es
 "Temperatura".
 
+`precipitacion_mensual()` suma la precipitación de cada mes, para cada
+estación:
+
+```{r ejemplo-precipitacion}
+head(precipitacion_mensual(estaciones))
+```
+
+Los días sin medición se ignoran, pero si un mes entero no tiene datos el
+acumulado queda en `NA` y no en cero.
+
 Y `leer_estacion()` descarga y lee los datos de cualquier estación del INTA
 a partir de su código.
 
@@ -83,9 +93,9 @@ a partir de su código.
 ## Contribuir
 
 Nos interesan sobre todo los reportes de errores y las sugerencias de
-funciones nuevas para analizar otras variables del dataset, como la
-precipitación o la humedad. Si querés contribuir, abrí un
-[issue](https://github.com/boglicdelfina/MeteorologicoR/issues) y, leé antes la
+funciones nuevas para analizar otras variables del dataset, como la humedad
+o el viento. Si querés contribuir, abrí un
+[issue](https://github.com/boglicdelfina/MeteorologicoR/issues) y leé antes la
 [guía de contribución](.github/CONTRIBUTING.md).
 
 Por favor tené en cuenta que MeteorologicoR se publica con un
