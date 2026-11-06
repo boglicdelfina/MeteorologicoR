@@ -83,6 +83,22 @@ colores, la función elige cinco al azar y avisa; si no indicamos título, usa
 grafico_temperatura_mensual(estaciones)
 ```
 
+## Acumular la precipitación
+
+`precipitacion_mensual()` suma la precipitación diaria de cada estación
+dentro de cada mes:
+
+```{r}
+head(precipitacion_mensual(estaciones))
+```
+
+La columna `mes` guarda el primer día de cada mes, así que el resultado se
+puede graficar o filtrar por fecha directamente.
+
+Los días sin medición se ignoran, pero si un mes entero no tiene ningún dato
+el acumulado queda en `NA` y no en cero. Es una distinción importante: un mes
+sin lluvia y un mes sin mediciones no son lo mismo.
+
 ## Leer los datos de otra estación
 
 Las funciones anteriores trabajan con los datos que ya vienen en el paquete,
@@ -94,12 +110,13 @@ otra <- leer_estacion("NH0098", "datos/NH0098.csv")
 ```
 
 Si el archivo ya está en esa ruta, la función lo lee directamente en vez de
-volver a descargarlo, y avisa cuál de los dos caminos tomó.
+volver a descargarlo, y avisa cuál de los dos caminos tomó. Si la carpeta de
+destino no existe, la crea.
 
 ## Cuando algo sale mal
 
-Las tres funciones revisan sus argumentos antes de hacer nada y cortan con un
-mensaje claro:
+Las cuatro funciones revisan sus argumentos antes de hacer nada y cortan con
+un mensaje claro:
 
 ```{r, error = TRUE}
 tabla_resumen_temperatura("hola")
@@ -111,4 +128,8 @@ tabla_resumen_temperatura(data.frame(id = "NH0437"))
 
 ```{r, error = TRUE}
 grafico_temperatura_mensual(estaciones, colores = c("red", "blue"))
+```
+
+```{r, error = TRUE}
+precipitacion_mensual(data.frame(id = "NH0437"))
 ```
