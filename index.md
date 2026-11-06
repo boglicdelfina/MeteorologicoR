@@ -3,8 +3,9 @@
 MeteorologicoR reúne las funciones que desarrollamos durante los
 trabajos transversales de Programación II para trabajar con datos de
 estaciones meteorológicas del INTA. Sirve para descargar los datos de
-una estación, resumir sus temperaturas y graficar el ciclo anual sin
-tener que reescribir el mismo código cada vez.
+una estación, resumir sus temperaturas, acumular la precipitación por
+mes y graficar el ciclo anual sin tener que reescribir el mismo código
+cada vez.
 
 Está pensado para estudiantes y docentes que trabajen con los datos del
 Sistema de Información y Gestión Agropecuaria (SIGA).
@@ -87,6 +88,26 @@ grafico_temperatura_mensual(
 Si no le pasás colores los elige al azar, y el título por defecto es
 “Temperatura”.
 
+[`precipitacion_mensual()`](https://boglicdelfina.github.io/MeteorologicoR/reference/precipitacion_mensual.md)
+suma la precipitación de cada mes, para cada estación:
+
+``` r
+
+head(precipitacion_mensual(estaciones))
+#> # A tibble: 6 × 3
+#>   id     mes        precipitacion_acumulada
+#>   <chr>  <date>                       <dbl>
+#> 1 NH0046 1973-01-01                    90.4
+#> 2 NH0046 1973-02-01                   204. 
+#> 3 NH0046 1973-03-01                   197. 
+#> 4 NH0046 1973-04-01                    99.2
+#> 5 NH0046 1973-05-01                     4.4
+#> 6 NH0046 1973-06-01                   160
+```
+
+Los días sin medición se ignoran, pero si un mes entero no tiene datos
+el acumulado queda en `NA` y no en cero.
+
 Y
 [`leer_estacion()`](https://boglicdelfina.github.io/MeteorologicoR/reference/leer_estacion.md)
 descarga y lee los datos de cualquier estación del INTA a partir de su
@@ -101,5 +122,11 @@ código.
 
 Nos interesan sobre todo los reportes de errores y las sugerencias de
 funciones nuevas para analizar otras variables del dataset, como la
-precipitación o la humedad. Si querés contribuir, abrí un
-[issue](https://github.com/boglicdelfina/MeteorologicoR/issues).
+humedad o el viento. Si querés contribuir, abrí un
+[issue](https://github.com/boglicdelfina/MeteorologicoR/issues) y leé
+antes la [guía de
+contribución](https://boglicdelfina.github.io/MeteorologicoR/CONTRIBUTING.md).
+
+Por favor tené en cuenta que MeteorologicoR se publica con un [código de
+conducta](https://boglicdelfina.github.io/MeteorologicoR/CODE_OF_CONDUCT.md).
+Al contribuir a este proyecto, aceptás respetar sus términos.

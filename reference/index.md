@@ -8,5 +8,7 @@
   : Grafico del promedio mensual de temperatura
 - [`leer_estacion()`](https://boglicdelfina.github.io/MeteorologicoR/reference/leer_estacion.md)
   : Descarga y lee los datos de una estacion meteorologica
+- [`precipitacion_mensual()`](https://boglicdelfina.github.io/MeteorologicoR/reference/precipitacion_mensual.md)
+  : Precipitacion acumulada por estacion y por mes
 - [`tabla_resumen_temperatura()`](https://boglicdelfina.github.io/MeteorologicoR/reference/tabla_resumen_temperatura.md)
   : Tabla de resumen de la temperatura de abrigo

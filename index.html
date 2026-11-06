@@ -55,7 +55,7 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>MeteorologicoR reúne las funciones que desarrollamos durante los trabajos transversales de Programación II para trabajar con datos de estaciones meteorológicas del INTA. Sirve para descargar los datos de una estación, resumir sus temperaturas y graficar el ciclo anual sin tener que reescribir el mismo código cada vez.</p>
+<p>MeteorologicoR reúne las funciones que desarrollamos durante los trabajos transversales de Programación II para trabajar con datos de estaciones meteorológicas del INTA. Sirve para descargar los datos de una estación, resumir sus temperaturas, acumular la precipitación por mes y graficar el ciclo anual sin tener que reescribir el mismo código cada vez.</p>
 <p>Está pensado para estudiantes y docentes que trabajen con los datos del Sistema de Información y Gestión Agropecuaria (SIGA).</p>
 <div class="section level2">
 <h2 id="instalación">Instalación<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n"></a>
@@ -114,6 +114,19 @@
 <span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-ejemplo-grafico-1.png" alt="" width="100%"></p>
 <p>Si no le pasás colores los elige al azar, y el título por defecto es “Temperatura”.</p>
+<p><code><a href="reference/precipitacion_mensual.html">precipitacion_mensual()</a></code> suma la precipitación de cada mes, para cada estación:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="reference/precipitacion_mensual.html">precipitacion_mensual</a></span><span class="op">(</span><span class="va">estaciones</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 3</span></span>
+<span><span class="co">#&gt;   id     mes        precipitacion_acumulada</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;  &lt;date&gt;                       &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 NH0046 1973-01-01                    90.4</span></span>
+<span><span class="co">#&gt; 2 NH0046 1973-02-01                   204. </span></span>
+<span><span class="co">#&gt; 3 NH0046 1973-03-01                   197. </span></span>
+<span><span class="co">#&gt; 4 NH0046 1973-04-01                    99.2</span></span>
+<span><span class="co">#&gt; 5 NH0046 1973-05-01                     4.4</span></span>
+<span><span class="co">#&gt; 6 NH0046 1973-06-01                   160</span></span></code></pre></div>
+<p>Los días sin medición se ignoran, pero si un mes entero no tiene datos el acumulado queda en <code>NA</code> y no en cero.</p>
 <p>Y <code><a href="reference/leer_estacion.html">leer_estacion()</a></code> descarga y lee los datos de cualquier estación del INTA a partir de su código.</p>
 </div>
 <div class="section level2">
@@ -127,7 +140,8 @@
 <div class="section level2">
 <h2 id="contribuir">Contribuir<a class="anchor" aria-label="anchor" href="#contribuir"></a>
 </h2>
-<p>Nos interesan sobre todo los reportes de errores y las sugerencias de funciones nuevas para analizar otras variables del dataset, como la precipitación o la humedad. Si querés contribuir, abrí un <a href="https://github.com/boglicdelfina/MeteorologicoR/issues" class="external-link">issue</a>.</p>
+<p>Nos interesan sobre todo los reportes de errores y las sugerencias de funciones nuevas para analizar otras variables del dataset, como la humedad o el viento. Si querés contribuir, abrí un <a href="https://github.com/boglicdelfina/MeteorologicoR/issues" class="external-link">issue</a> y leé antes la <a href="CONTRIBUTING.html">guía de contribución</a>.</p>
+<p>Por favor tené en cuenta que MeteorologicoR se publica con un <a href="CODE_OF_CONDUCT.html">código de conducta</a>. Al contribuir a este proyecto, aceptás respetar sus términos.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">

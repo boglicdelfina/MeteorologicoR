@@ -2,7 +2,8 @@
 
 Descarga el archivo de una estacion del INTA si todavia no esta en el
 disco y lo lee. Si el archivo ya existe en la ruta indicada, lo lee
-directamente sin volver a descargarlo.
+directamente sin volver a descargarlo. Si la carpeta de destino no
+existe, la crea.
 
 ## Usage
 
