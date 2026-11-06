@@ -28,4 +28,7 @@ Datos diarios de cinco estaciones del INTA ubicadas en Santa Fe, tomados
 del Sistema de Informacion y Gestion Agropecuaria (SIGA). Incluye las
 estaciones NH0046, NH0098, NH0437, NH0472 y NH0910.
 }
+\examples{
+head(estaciones)
+}
 \keyword{datasets}
