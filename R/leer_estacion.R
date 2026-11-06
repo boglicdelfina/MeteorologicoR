@@ -3,7 +3,7 @@
 #'
 #' Descarga el archivo de una estacion del INTA si todavia no esta en el disco
 #' y lo lee. Si el archivo ya existe en la ruta indicada, lo lee directamente
-#' sin volver a descargarlo.
+#' sin volver a descargarlo. Si la carpeta de destino no existe, la crea.
 #'
 #' @param id Texto con el codigo de la estacion, por ejemplo "NH0437".
 #' @param ruta Texto con la ruta donde guardar o buscar el archivo, por
@@ -31,6 +31,7 @@ leer_estacion <- function(id, ruta) {
       "https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/",
       id, ".csv"
     )
+    dir.create(dirname(ruta), recursive = TRUE, showWarnings = FALSE)
     utils::download.file(url, ruta)
     cli::cli_inform("Se descarg\u00F3 el archivo de la estaci\u00F3n {id} en {ruta}.")
   } else {
