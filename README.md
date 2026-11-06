@@ -1,7 +1,7 @@
 
 <!-- README.md se genera desde README.Rmd. Por favor editá ese archivo -->
 
-# MeteorologicoR
+# MeteorologicoR <a href="https://boglicdelfina.github.io/MeteorologicoR/"><img src="man/figures/logo.png" align="right" height="120" alt="MeteorologicoR website" /></a>
 
 <!-- badges: start -->
 
