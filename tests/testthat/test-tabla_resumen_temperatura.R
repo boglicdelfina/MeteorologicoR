@@ -42,6 +42,13 @@ test_that("ignora los valores faltantes", {
 test_that("no acepta argumentos invalidos", {
 
   expect_error(tabla_resumen_temperatura("hola"), "data.frame")
-  expect_error(tabla_resumen_temperatura(data.frame(id = "A")), "no tiene la columna")
+  expect_error(
+    tabla_resumen_temperatura(data.frame(id = "A")),
+    "no tiene todas las columnas"
+  )
+  expect_error(
+    tabla_resumen_temperatura(data.frame(temperatura_abrigo_150cm = 1)),
+    "no tiene todas las columnas"
+  )
 
 })

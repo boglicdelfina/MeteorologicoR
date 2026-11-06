@@ -23,8 +23,14 @@ tabla_resumen_temperatura <- function(datos) {
     ))
   }
 
-  if (!"temperatura_abrigo_150cm" %in% names(datos)) {
-    cli::cli_abort("La tabla no tiene la columna temperatura_abrigo_150cm.")
+  columnas <- c("id", "temperatura_abrigo_150cm")
+  faltantes <- setdiff(columnas, names(datos))
+
+  if (length(faltantes) > 0) {
+    cli::cli_abort(c(
+      "La tabla no tiene todas las columnas necesarias.",
+      "i" = "Faltan: {faltantes}."
+    ))
   }
 
   datos |>
