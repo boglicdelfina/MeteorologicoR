@@ -116,6 +116,32 @@ grafico_temperatura_mensual(estaciones)
 
 ![](meteorologicor_files/figure-html/unnamed-chunk-7-1.png)
 
+## Acumular la precipitación
+
+[`precipitacion_mensual()`](https://boglicdelfina.github.io/MeteorologicoR/reference/precipitacion_mensual.md)
+suma la precipitación diaria de cada estación dentro de cada mes:
+
+``` r
+
+head(precipitacion_mensual(estaciones))
+#> # A tibble: 6 × 3
+#>   id     mes        precipitacion_acumulada
+#>   <chr>  <date>                       <dbl>
+#> 1 NH0046 1973-01-01                    90.4
+#> 2 NH0046 1973-02-01                   204. 
+#> 3 NH0046 1973-03-01                   197. 
+#> 4 NH0046 1973-04-01                    99.2
+#> 5 NH0046 1973-05-01                     4.4
+#> 6 NH0046 1973-06-01                   160
+```
+
+La columna `mes` guarda el primer día de cada mes, así que el resultado
+se puede graficar o filtrar por fecha directamente.
+
+Los días sin medición se ignoran, pero si un mes entero no tiene ningún
+dato el acumulado queda en `NA` y no en cero. Es una distinción
+importante: un mes sin lluvia y un mes sin mediciones no son lo mismo.
+
 ## Leer los datos de otra estación
 
 Las funciones anteriores trabajan con los datos que ya vienen en el
@@ -129,11 +155,12 @@ otra <- leer_estacion("NH0098", "datos/NH0098.csv")
 ```
 
 Si el archivo ya está en esa ruta, la función lo lee directamente en vez
-de volver a descargarlo, y avisa cuál de los dos caminos tomó.
+de volver a descargarlo, y avisa cuál de los dos caminos tomó. Si la
+carpeta de destino no existe, la crea.
 
 ## Cuando algo sale mal
 
-Las tres funciones revisan sus argumentos antes de hacer nada y cortan
+Las cuatro funciones revisan sus argumentos antes de hacer nada y cortan
 con un mensaje claro:
 
 ``` r
@@ -157,4 +184,12 @@ grafico_temperatura_mensual(estaciones, colores = c("red", "blue"))
 #> Error in `grafico_temperatura_mensual()`:
 #> ! Faltan colores para graficar todas las estaciones.
 #> ℹ Hay 5 estaciones y se indicaron 2 colores.
+```
+
+``` r
+
+precipitacion_mensual(data.frame(id = "NH0437"))
+#> Error in `precipitacion_mensual()`:
+#> ! La tabla no tiene todas las columnas necesarias.
+#> ℹ Faltan: fecha and precipitacion_pluviometrica.
 ```
